@@ -21,4 +21,11 @@ public class Constants {
         public static final int D_HEIGHT = (int) (D_HEIGHT_DEFAULT * Game.SCALE / 12);
     }
 
+    public static class TitleDeeds {
+        public static final int TD_WIDTH_DEFAULT = 140;
+        public static final int TD_HEIGHT_DEFAULT = 178;
+        public static final int TD_WIDTH = (int) (TD_WIDTH_DEFAULT * Game.SCALE / 12);
+        public static final int TD_HEIGHT = (int) (TD_HEIGHT_DEFAULT * Game.SCALE / 12);
+    }
+
 }

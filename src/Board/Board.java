@@ -2,10 +2,13 @@ package Board;
 
 import Game.Game;
 import gamestate.Playing;
+import gamestate.Utilz.LoadSave;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+import static gamestate.Utilz.Constants.TitleDeeds.TD_HEIGHT_DEFAULT;
+import static gamestate.Utilz.Constants.TitleDeeds.TD_WIDTH_DEFAULT;
 import static gamestate.Utilz.LoadSave.*;
 
 
@@ -13,7 +16,10 @@ public class Board {
 
 
     private final Playing playing;
+
     private BufferedImage boardImg;
+    private BufferedImage[][] titleDeedsImg;
+    private int index1, index2;
 
     private int boardX, boardY, boardWidth, boardHeight;
 
@@ -159,6 +165,71 @@ public class Board {
         boardX = 0;
         boardY = 0;
 
+    }
+
+    private void loadImgsTitleDeeds() {
+        titleDeedsImg = new BufferedImage[6][5];
+        BufferedImage temp = LoadSave.GetSpriteAtlas(LoadSave.TITLE_ATLAS);
+        for (int j = 0; j < titleDeedsImg.length; j++) {
+            for (int i = 0; i < titleDeedsImg[j].length; i++) {
+                titleDeedsImg[j][i] = temp.getSubimage(i * TD_WIDTH_DEFAULT,  j*TD_HEIGHT_DEFAULT, TD_WIDTH_DEFAULT, TD_HEIGHT_DEFAULT);
+            }
+        }
+    }
+    public void drawTitleDeeds(Graphics g) {
+        g.drawImage(titleDeedsImg[index1][index2], 700, 170, TD_WIDTH_DEFAULT, TD_HEIGHT_DEFAULT, null);
+    }
+
+    public void printResult(int fieldNumber) {
+        switch (fieldNumber) {
+            case 1 -> titleDeedsImg[index1][index2] = titleDeedsImg[0][0];
+//            case 2 -> ;
+            case 3 -> titleDeedsImg[index1][index2] = titleDeedsImg[0][1];
+//            case 4 -> ;
+            case 5 -> titleDeedsImg[index1][index2] = titleDeedsImg[4][2];
+            case 6 -> titleDeedsImg[index1][index2] = titleDeedsImg[0][2];
+//            case 7 -> titleDeedsImg[index] = titleDeedsImg[5];
+            case 8 -> titleDeedsImg[index1][index2] = titleDeedsImg[0][3];
+            case 9 -> titleDeedsImg[index1][index2] = titleDeedsImg[0][4];
+//            case 10 -> titleDeedsImg[index] = titleDeedsImg[5];
+            case 11 -> titleDeedsImg[index1][index2] = titleDeedsImg[1][0];
+            case 12 -> titleDeedsImg[index1][index2] = titleDeedsImg[4][0];
+            case 13 -> titleDeedsImg[index1][index2] = titleDeedsImg[1][1];
+            case 14 -> titleDeedsImg[index1][index2] = titleDeedsImg[1][2];
+            case 15 -> titleDeedsImg[index1][index2] = titleDeedsImg[4][3];
+            case 16 -> titleDeedsImg[index1][index2] = titleDeedsImg[1][3];
+//            case 17 -> titleDeedsImg[index] = titleDeedsImg[5];
+            case 18 -> titleDeedsImg[index1][index2] = titleDeedsImg[1][4];
+            case 19 -> titleDeedsImg[index1][index2] = titleDeedsImg[1][5];
+//            case 20 -> titleDeedsImg[index] = titleDeedsImg[5];
+            case 21 -> titleDeedsImg[index1][index2] = titleDeedsImg[2][0];
+//            case 22 -> titleDeedsImg[index] = titleDeedsImg[5];
+            case 23 -> titleDeedsImg[index1][index2] = titleDeedsImg[2][1];
+            case 24 -> titleDeedsImg[index1][index2] = titleDeedsImg[2][2];
+            case 25 -> titleDeedsImg[index1][index2] = titleDeedsImg[4][4];
+            case 26 -> titleDeedsImg[index1][index2] = titleDeedsImg[2][3];
+            case 27 -> titleDeedsImg[index1][index2] = titleDeedsImg[2][4];
+            case 28 -> titleDeedsImg[index1][index2] = titleDeedsImg[4][1];
+            case 29 -> titleDeedsImg[index1][index2] = titleDeedsImg[2][5];
+//            case 30 -> titleDeedsImg[index] = titleDeedsImg[5];
+            case 31 -> titleDeedsImg[index1][index2] = titleDeedsImg[3][0];
+            case 32 -> titleDeedsImg[index1][index2] = titleDeedsImg[3][1];
+//            case 33 -> titleDeedsImg[index] = titleDeedsImg[5];
+            case 34 -> titleDeedsImg[index1][index2] = titleDeedsImg[3][2];
+            case 35 -> titleDeedsImg[index1][index2] = titleDeedsImg[4][5];
+//            case 36 -> titleDeedsImg[index] = titleDeedsImg[5];
+            case 37 -> titleDeedsImg[index1][index2] = titleDeedsImg[3][3];
+//            case 38 -> titleDeedsImg[index] = titleDeedsImg[5];
+            case 39 -> titleDeedsImg[index1][index2] = titleDeedsImg[3][4];
+//            case 40 -> titleDeedsImg[index] = titleDeedsImg[5];
+
+
+
+
+
+            default -> {
+            }
+        }
     }
 
 }

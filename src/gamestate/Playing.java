@@ -7,7 +7,6 @@ import entities.Player;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 
@@ -20,7 +19,9 @@ public class Playing extends State implements Statemethods {
     private Dice dice1, dice2;
 
 
-    private int boardX, boardY, boardWidth, boardHeight, playerX, playerY, playerWidth, playerHeight;
+    private int boardX, boardY, boardWidth, boardHeight,
+            consoleX,consoleY,consoleWidth,consoleHeight,
+            playerX, playerY, playerWidth, playerHeight;
 
     private boolean active = true;
     Board board;
