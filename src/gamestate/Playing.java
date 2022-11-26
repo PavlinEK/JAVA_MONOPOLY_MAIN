@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.lang.reflect.Field;
+
 
 import static gamestate.Utilz.LoadSave.*;
 
@@ -57,8 +57,6 @@ public class Playing extends State implements Statemethods {
         playerWidth = (int) (30 * Game.SCALE);
         playerHeight = (int) (20 * Game.SCALE);
         playerX = 580;
-
-//570, 520,470
         playerY = 580;
 
     }
@@ -133,41 +131,19 @@ public class Playing extends State implements Statemethods {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-//        if (!gameOver) {
-//            if (paused)
-//                pausedOverlay.mouseMoved(e);
-//            else if (lvlCompleted) {
-//                levelCompletedOverlay.mouseMoved(e);
-//
-//            }
-//        }
+
     }
 
 
     public void mouseDragged(MouseEvent e) {
-//        if (!gameOver)
-//            if (paused)
-//                pausedOverlay.mouseDragged(e);
+
     }
 
     //
     public void resetAll() {
-//        gameOver = false;
-//        paused = false;
-//        lvlCompleted = false;
-//        player.resetAll();
-//        enemyManager.resetAllEnemies();
+
     }
 
-    public void checkEnemyHit(Rectangle2D.Float attackBox) {
-
-//        enemyManager.checkEnemyHit(attackBox);
-    }
-
-    public void setGameOver(boolean gameOver) {
-
-//        this.gameOver = gameOver;
-    }
 
     public boolean isActive() {
         return active;

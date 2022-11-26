@@ -12,7 +12,10 @@ import static gamestate.Utilz.Constants.UI.Buttons.*;
 
 public class Dice {
     public int rollDice;
-    private int xPos, yPos, rowIndex, index;
+    private final int x;
+    private final int y;
+    private int rowIndex;
+    private int index;
     private int xOffsetCenter = B_WIDTH / 2;
     private Playing playing;
     private BufferedImage[] img;
@@ -20,29 +23,28 @@ public class Dice {
     private Rectangle bounds;
     Random random = new Random();
 
-    public Dice(int xPos, int yPos, Playing playing) {
-        this.xPos = xPos;
-        this.yPos = yPos;
+    public Dice(int x, int y, Playing playing) {
+        this.x = x;
+        this.y = y;
         this.playing = playing;
         loadImgs();
         initBounds();
     }
 
     private void initBounds() {
-        bounds = new Rectangle(xPos - xOffsetCenter, yPos, D_WIDTH, D_HEIGHT);
+        bounds = new Rectangle(x - xOffsetCenter, y, D_WIDTH, D_HEIGHT);
     }
 
     private void loadImgs() {
         img = new BufferedImage[6];
         BufferedImage temp = LoadSave.GetSpriteAtlas(LoadSave.DICE);
         for (int i = 0; i < img.length; i++) {
-            img[i] = temp.getSubimage(i * D_WIDTH_DEFAULT, rowIndex * D_HEIGHT_DEFAULT, D_WIDTH_DEFAULT, D_HEIGHT_DEFAULT);
-
+            img[i] = temp.getSubimage(i * D_WIDTH_DEFAULT, 0, D_WIDTH_DEFAULT, D_HEIGHT_DEFAULT);
         }
     }
 
     public void draw(Graphics g) {
-        g.drawImage(img[index], xPos - xOffsetCenter, yPos, D_WIDTH, D_HEIGHT, null);
+        g.drawImage(img[index], x - xOffsetCenter, y, D_WIDTH, D_HEIGHT, null);
     }
 
     public void update() {
@@ -53,9 +55,8 @@ public class Dice {
             index = 2;
     }
 
-    public int rollDice() {
+    public void rollDice() {
         rollDice = random.nextInt(6) + 1;
-        return rollDice;
     }
 
     public void printResult(int rollDice) {
@@ -68,17 +69,7 @@ public class Dice {
             case 6 -> img[index] = img[5];
             default -> {
             }
-
-
         }
-    }
-
-    public boolean isMouseOver() {
-        return mouseOver;
-    }
-
-    public void setMouseOver(boolean mouseOver) {
-        this.mouseOver = mouseOver;
     }
 
     public boolean isMousePressed() {
@@ -89,16 +80,4 @@ public class Dice {
         this.mousePressed = mousePressed;
     }
 
-    public Rectangle getBounds() {
-        return bounds;
-    }
-
-//    public void applyGamestate() {
-//        Gamestate.state = state;
-//    }
-
-    public void resetBools() {
-        mouseOver = false;
-        mousePressed = false;
-    }
 }

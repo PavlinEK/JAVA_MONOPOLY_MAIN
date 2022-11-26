@@ -9,15 +9,8 @@ import java.awt.geom.Rectangle2D;
 public abstract class Entity {
     protected float x, y;
     protected int width, height;
-    protected int aniTick, aniIndex, state;
+    protected int state;
     protected Rectangle2D.Float hitbox;
-
-    //money
-    protected int maxHealth = 10;
-    protected int currentHealth = maxHealth;
-    protected Rectangle2D.Float attackBox;
-    protected float walkSpeed;
-
 
     public Entity(float x, float y, int width, int height) {
         this.x = x;
@@ -27,9 +20,9 @@ public abstract class Entity {
 
     }
 
-    public void drawHitbox(Graphics g, int xLvlOffset) {
+    public void drawHitbox(Graphics g) {
         g.setColor(Color.CYAN);
-        g.drawRect((int) hitbox.x - xLvlOffset, (int) hitbox.y, (int) hitbox.width, (int) hitbox.height);
+        g.drawRect((int) hitbox.x , (int) hitbox.y, (int) hitbox.width, (int) hitbox.height);
     }
 
     protected void initHitbox(int width, int height) {
@@ -46,7 +39,4 @@ public abstract class Entity {
         return state;
     }
 
-    public int getAniIndex() {
-        return aniIndex;
-    }
 }

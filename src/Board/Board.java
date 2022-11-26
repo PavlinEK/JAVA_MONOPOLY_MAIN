@@ -1,7 +1,6 @@
 package Board;
 
 import Game.Game;
-import entities.Player;
 import gamestate.Playing;
 
 import java.awt.*;
@@ -14,14 +13,11 @@ public class Board {
 
 
     private final Playing playing;
-    public int[] playerPosX;
     private BufferedImage boardImg;
 
     private int boardX, boardY, boardWidth, boardHeight;
 
     private static Field[] fields = new Field[40];
-    public Player player;
-    int currentField = 0;
 
     public Board(int boardX, int boardY, int boardWidth, int boardHeight, Playing playing) {
 
@@ -151,15 +147,9 @@ public class Board {
         fields[35] = f35;
         fields[36] = f36;
         fields[37] = f37;
-
         fields[38] = f38;
         fields[39] = f39;
 
-    }
-    public void setPlaygroundX(int[]movePosX) {
-   int startPos=570;
-        for (int i = 0; i < movePosX.length; i++)
-            movePosX[i] = (startPos -= 50);
     }
 
     public void loadBoard() {
@@ -169,16 +159,6 @@ public class Board {
         boardX = 0;
         boardY = 0;
 
-
     }
 
-
-    public void setFields(Field[] fields) {
-        this.fields = fields;
-
-    }
-
-    public static Field[] getFields() {
-        return fields;
-    }
 }

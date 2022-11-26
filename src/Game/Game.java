@@ -10,12 +10,11 @@ import java.awt.*;
 public class Game implements Runnable{
 
     private GameWindow gameWindow;
-    private GamePanel gamePanel;
+    private final GamePanel gamePanel;
     private Thread gameThread;
     private final int FPS_SET = 120;
     private final int UPS_SET = 200;
 
-    private Player player;
     private Playing playing;
     private Menu menu;
 
@@ -118,16 +117,6 @@ public class Game implements Runnable{
 
     public void windowFocusLost() {
 
-//        if (Gamestate.state == Gamestate.PLAYING) {
-//            playing.getPlayer().resetDirBooleans();
-//        }
     }
-
-
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
 
 }

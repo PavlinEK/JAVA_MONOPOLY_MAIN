@@ -18,22 +18,14 @@ public class Menu extends State implements Statemethods {
     public Menu(Game game) {
         super(game);
         loadButtons();
-        loadBackground();
         backgroundImgPink=LoadSave.GetSpriteAtlas(LoadSave.MENU_BACKGROUND_IMG);
     }
 
-    private void loadBackground() {
-        backgroundImg = LoadSave.GetSpriteAtlas(LoadSave.MENU_BACKGROUND);
-        menuWidth = (int) (backgroundImg.getWidth() * Game.SCALE);
-        menuHeight = (int) (backgroundImg.getHeight() * Game.SCALE);
-        menuX = Game.GAME_WIDTH / 2 - menuWidth / 2;
-        menuY = (int) (45 * Game.SCALE);
-    }
 
     private void loadButtons() {
-        buttons[0] = new MenuButton(Game.GAME_WIDTH / 2, (int) (150 * Game.SCALE), 0, Gamestate.PLAYING);
-        buttons[1] = new MenuButton(Game.GAME_WIDTH / 2, (int) (220 * Game.SCALE), 1, Gamestate.OPTIONS);
-        buttons[2] = new MenuButton(Game.GAME_WIDTH / 2, (int) (290 * Game.SCALE), 2, Gamestate.QUIT);
+        buttons[0] = new MenuButton((int) (100* Game.SCALE), (int) (10 * Game.SCALE), 0, Gamestate.PLAYING);
+        buttons[1] = new MenuButton((int) (100* Game.SCALE), (int) (80 * Game.SCALE), 1, Gamestate.OPTIONS);
+        buttons[2] = new MenuButton((int) (100* Game.SCALE), (int) (150 * Game.SCALE), 2, Gamestate.QUIT);
     }
 
     @Override

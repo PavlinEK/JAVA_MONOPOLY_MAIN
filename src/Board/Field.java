@@ -3,7 +3,6 @@ package Board;
 import Game.Game;
 import gamestate.Playing;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
@@ -12,7 +11,6 @@ public class Field {
     int number;
     private String name;
     String description;
-    static int totalSquares = 0;
     protected float x, y;
     protected int width, height;
 
@@ -41,11 +39,9 @@ public class Field {
         return x;
     }
 
-
     public float getY() {
         return y;
 
     }
-
 
 }

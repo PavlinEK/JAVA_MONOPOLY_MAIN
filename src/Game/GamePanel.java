@@ -45,10 +45,6 @@ public class GamePanel extends JPanel {
         game.render(g);
     }
 
-    public void updateGame() {
-
-    }
-
     public static Game getGame() {
         return game;
     }
