@@ -1,10 +1,14 @@
 package entities;
 
+import Game.Game;
 import gamestate.Playing;
 import gamestate.Utilz.LoadSave;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+
+import static gamestate.Utilz.LoadSave.GetSpriteAtlas;
+import static gamestate.Utilz.LoadSave.PLAYER_HAT;
 
 
 public class Player extends Entity {

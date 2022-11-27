@@ -2,16 +2,10 @@ package Board;
 
 import Game.Game;
 import gamestate.Playing;
-import gamestate.Utilz.LoadSave;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
 
-import static gamestate.Utilz.Constants.Dice.*;
-import static gamestate.Utilz.Constants.Dice.D_HEIGHT;
-import static gamestate.Utilz.Constants.TitleDeeds.TD_HEIGHT_DEFAULT;
-import static gamestate.Utilz.Constants.TitleDeeds.TD_WIDTH_DEFAULT;
 
 public class Field {
 

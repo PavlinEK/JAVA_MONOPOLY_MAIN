@@ -47,8 +47,8 @@ public class Playing extends State implements Statemethods {
         dice2 = new Dice((int) (Game.GAME_WIDTH / 2.85 - boardWidth / 2), (int) (boardHeight + 475),
                 this);
 
-        loadPlayer();
         player = new Player(playerX, playerY, playerWidth, playerHeight, this);
+        loadPlayer();
 
 
 
@@ -86,7 +86,7 @@ public class Playing extends State implements Statemethods {
             playerY += 52;
 
         player.setLocation(playerX, playerY);
-        System.out.println(playerY);
+
     }
 
     public void setPosNum() {
@@ -153,11 +153,10 @@ public class Playing extends State implements Statemethods {
 
         int diceTotal = dice1.rollDice + dice2.rollDice;
         for (int i = 0; i < diceTotal; i++) {
-            setPosNum();
             movePlayer();
-            board.printResult(posNum);
         }
-
+        setPosNum();
+        board.printResult(posNum);
 //        board.printResult(posNum);
 
 
