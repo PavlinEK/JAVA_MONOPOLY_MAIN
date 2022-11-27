@@ -20,8 +20,9 @@ public class Playing extends State implements Statemethods {
 
 
     private int boardX, boardY, boardWidth, boardHeight,
-            consoleX,consoleY,consoleWidth,consoleHeight,
+            consoleX, consoleY, consoleWidth, consoleHeight,
             playerX, playerY, playerWidth, playerHeight;
+    int[] posNum;
 
     private boolean active = true;
     Board board;
@@ -38,6 +39,7 @@ public class Playing extends State implements Statemethods {
         board = new Board(boardX, boardY, boardWidth, boardHeight, this);
         board.loadBoard();
         board.setFields();
+        board.loadImgsTitleDeeds();
 
 
         dice1 = new Dice((int) (Game.GAME_WIDTH / 3.5 - boardWidth / 2), (int) (boardHeight + 475),
@@ -46,8 +48,9 @@ public class Playing extends State implements Statemethods {
                 this);
 
         loadPlayer();
-
         player = new Player(playerX, playerY, playerWidth, playerHeight, this);
+
+
 
 //        gameOverOverlay = new GameOverOverlay(this);
 
@@ -70,21 +73,45 @@ public class Playing extends State implements Statemethods {
         int borderD = 580;
 
         //        move left
-        if(playerX>borderL&&playerY==borderD)
-            playerX -=  53;
-        //        move up
-        else if(playerX==borderL&&playerY>borderU)
-            playerY -=  52;
-        //       move right
-        else if(playerX<borderR&&playerY==borderU)
+        if (playerX > borderL && playerY == borderD)
+            playerX -= 53;
+            //        move up
+        else if (playerX == borderL && playerY > borderU)
+            playerY -= 52;
+            //       move right
+        else if (playerX < borderR && playerY == borderU)
             playerX += 53;
-        //        down
-        else if(playerX==borderR&&playerY<borderD)
-            playerY +=  52;
+            //        down
+        else if (playerX == borderR && playerY < borderD)
+            playerY += 52;
 
         player.setLocation(playerX, playerY);
         System.out.println(playerY);
     }
+
+    public void setPosNum() {
+        posNum = new int[40];
+
+        for (int i = 0; i < 10; i++) {
+            if (playerX == (580 - 53*i) && playerY == 580)
+                posNum[i] = i;
+        }
+
+        for (int i = 10; i < 20; i++) {
+            if (playerX == 50 && playerY == (580-52*i))
+                posNum[i] = i;
+        }
+        for (int i = 20; i < 30; i++) {
+            if (playerX == (50+53*i) && playerY == 60)
+                posNum[i] = i;
+        }
+        for (int i = 30; i < 40; i++) {
+            if (playerX == 580 && playerY == (60+53*i))
+                posNum[i] = i;
+        }
+
+    }
+
 
 
     @Override
@@ -98,6 +125,7 @@ public class Playing extends State implements Statemethods {
     public void draw(Graphics g) {
 
         board.drawBoard(g);
+        board.drawTitleDeeds(g);
         player.render(g);
         dice1.draw(g);
         dice2.draw(g);
@@ -125,8 +153,14 @@ public class Playing extends State implements Statemethods {
 
         int diceTotal = dice1.rollDice + dice2.rollDice;
         for (int i = 0; i < diceTotal; i++) {
+            setPosNum();
             movePlayer();
+            board.printResult(posNum);
         }
+
+//        board.printResult(posNum);
+
+
     }
 
 

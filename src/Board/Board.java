@@ -156,6 +156,7 @@ public class Board {
         fields[38] = f38;
         fields[39] = f39;
 
+
     }
 
     public void loadBoard() {
@@ -167,69 +168,160 @@ public class Board {
 
     }
 
-    private void loadImgsTitleDeeds() {
+    public void loadImgsTitleDeeds() {
         titleDeedsImg = new BufferedImage[6][5];
         BufferedImage temp = LoadSave.GetSpriteAtlas(LoadSave.TITLE_ATLAS);
         for (int j = 0; j < titleDeedsImg.length; j++) {
             for (int i = 0; i < titleDeedsImg[j].length; i++) {
-                titleDeedsImg[j][i] = temp.getSubimage(i * TD_WIDTH_DEFAULT,  j*TD_HEIGHT_DEFAULT, TD_WIDTH_DEFAULT, TD_HEIGHT_DEFAULT);
+                titleDeedsImg[j][i] = temp.getSubimage(i * TD_WIDTH_DEFAULT, 0, TD_WIDTH_DEFAULT, TD_HEIGHT_DEFAULT);
             }
         }
     }
+
     public void drawTitleDeeds(Graphics g) {
-        g.drawImage(titleDeedsImg[index1][index2], 700, 170, TD_WIDTH_DEFAULT, TD_HEIGHT_DEFAULT, null);
+        g.drawImage(titleDeedsImg[index1][index2], 870, 170, (int) (TD_WIDTH_DEFAULT * 1.4), (int) (TD_HEIGHT_DEFAULT * 1.4), null);
     }
 
-    public void printResult(int fieldNumber) {
-        switch (fieldNumber) {
-            case 1 -> titleDeedsImg[index1][index2] = titleDeedsImg[0][0];
-//            case 2 -> ;
-            case 3 -> titleDeedsImg[index1][index2] = titleDeedsImg[0][1];
-//            case 4 -> ;
-            case 5 -> titleDeedsImg[index1][index2] = titleDeedsImg[4][2];
-            case 6 -> titleDeedsImg[index1][index2] = titleDeedsImg[0][2];
-//            case 7 -> titleDeedsImg[index] = titleDeedsImg[5];
-            case 8 -> titleDeedsImg[index1][index2] = titleDeedsImg[0][3];
-            case 9 -> titleDeedsImg[index1][index2] = titleDeedsImg[0][4];
-//            case 10 -> titleDeedsImg[index] = titleDeedsImg[5];
-            case 11 -> titleDeedsImg[index1][index2] = titleDeedsImg[1][0];
-            case 12 -> titleDeedsImg[index1][index2] = titleDeedsImg[4][0];
-            case 13 -> titleDeedsImg[index1][index2] = titleDeedsImg[1][1];
-            case 14 -> titleDeedsImg[index1][index2] = titleDeedsImg[1][2];
-            case 15 -> titleDeedsImg[index1][index2] = titleDeedsImg[4][3];
-            case 16 -> titleDeedsImg[index1][index2] = titleDeedsImg[1][3];
-//            case 17 -> titleDeedsImg[index] = titleDeedsImg[5];
-            case 18 -> titleDeedsImg[index1][index2] = titleDeedsImg[1][4];
-            case 19 -> titleDeedsImg[index1][index2] = titleDeedsImg[1][5];
-//            case 20 -> titleDeedsImg[index] = titleDeedsImg[5];
-            case 21 -> titleDeedsImg[index1][index2] = titleDeedsImg[2][0];
-//            case 22 -> titleDeedsImg[index] = titleDeedsImg[5];
-            case 23 -> titleDeedsImg[index1][index2] = titleDeedsImg[2][1];
-            case 24 -> titleDeedsImg[index1][index2] = titleDeedsImg[2][2];
-            case 25 -> titleDeedsImg[index1][index2] = titleDeedsImg[4][4];
-            case 26 -> titleDeedsImg[index1][index2] = titleDeedsImg[2][3];
-            case 27 -> titleDeedsImg[index1][index2] = titleDeedsImg[2][4];
-            case 28 -> titleDeedsImg[index1][index2] = titleDeedsImg[4][1];
-            case 29 -> titleDeedsImg[index1][index2] = titleDeedsImg[2][5];
-//            case 30 -> titleDeedsImg[index] = titleDeedsImg[5];
-            case 31 -> titleDeedsImg[index1][index2] = titleDeedsImg[3][0];
-            case 32 -> titleDeedsImg[index1][index2] = titleDeedsImg[3][1];
-//            case 33 -> titleDeedsImg[index] = titleDeedsImg[5];
-            case 34 -> titleDeedsImg[index1][index2] = titleDeedsImg[3][2];
-            case 35 -> titleDeedsImg[index1][index2] = titleDeedsImg[4][5];
-//            case 36 -> titleDeedsImg[index] = titleDeedsImg[5];
-            case 37 -> titleDeedsImg[index1][index2] = titleDeedsImg[3][3];
-//            case 38 -> titleDeedsImg[index] = titleDeedsImg[5];
-            case 39 -> titleDeedsImg[index1][index2] = titleDeedsImg[3][4];
-//            case 40 -> titleDeedsImg[index] = titleDeedsImg[5];
+    public void printResult(int[] fieldNumber) {
+
+        for (Field field : fields) {
+            for (int j : fieldNumber) {
+                if (field.number == j) {
+                    switch (field.number) {
+//                        case 0 -> {
+//                            index1 = 0;
+//                            index2 = 0;
+//                        }
+                        case 1 -> {
+                            index1 = 0;
+                            index2 = 0;
+                        }
+                        case 2 -> {
+                            index1 = 0;
+                            index2 = 1;
+                        }
+//            case 3 -> ;
+                        case 4 -> {
+                            index1 = 4;
+                            index2 = 2;
+                        }
+                        case 5 -> {
+                            index1 = 0;
+                            index2 = 2;
+                        }
+//            case 6 -> titleDeedsImg[index] = titleDeedsImg[5];
+                        case 7 -> {
+                            index1 = 0;
+                            index2 = 3;
+                        }
+                        case 8 -> {
+                            index1 = 0;
+                            index2 = 4;
+                        }
+//            case 9 -> titleDeedsImg[index] = titleDeedsImg[5];
+                        case 10 -> {
+                            index1 = 1;
+                            index2 = 0;
+                        }
+                        case 11 -> {
+                            index1 = 4;
+                            index2 = 0;
+                        }
+                        case 12 -> {
+                            index1 = 1;
+                            index2 = 1;
+                        }
+                        case 13 -> {
+                            index1 = 1;
+                            index2 = 2;
+                        }
+                        case 14 -> {
+                            index1 = 4;
+                            index2 = 3;
+                        }
+                        case 15 -> {
+                            index1 = 1;
+                            index2 = 3;
+                        }
+//            case 16 -> titleDeedsImg[index] = titleDeedsImg[5];
+                        case 17 -> {
+                            index1 = 1;
+                            index2 = 4;
+                        }
+                        case 18 -> {
+                            index1 = 1;
+                            index2 = 5;
+                        }
+//            case 19 -> titleDeedsImg[index] = titleDeedsImg[5];
+                        case 20 -> {
+                            index1 = 2;
+                            index2 = 0;
+                        }
+//            case 21 -> titleDeedsImg[index] = titleDeedsImg[5];
+                        case 22 -> {
+                            index1 = 2;
+                            index2 = 1;
+                        }
+                        case 23 -> {
+                            index1 = 2;
+                            index2 = 2;
+                        }
+                        case 24 -> {
+                            index1 = 4;
+                            index2 = 4;
+                        }
+                        case 25 -> {
+                            index1 = 2;
+                            index2 = 3;
+                        }
+                        case 26 -> {
+                            index1 = 2;
+                            index2 = 4;
+                        }
+                        case 27 -> {
+                            index1 = 4;
+                            index2 = 1;
+                        }
+                        case 28 -> {
+                            index1 = 2;
+                            index2 = 5;
+                        }
+//            case 29 -> titleDeedsImg[index] = titleDeedsImg[5];
+                        case 30 -> {
+                            index1 = 3;
+                            index2 = 0;
+                        }
+                        case 31 -> {
+                            index1 = 3;
+                            index2 = 1;
+                        }
+//            case 32 -> titleDeedsImg[index] = titleDeedsImg[5];
+                        case 33 -> {
+                            index1 = 3;
+                            index2 = 2;
+                        }
+                        case 34 -> {
+                            index1 = 4;
+                            index2 = 5;
+                        }
+//            case 35 -> titleDeedsImg[index] = titleDeedsImg[5];
+                        case 36 -> {
+                            index1 = 3;
+                            index2 = 3;
+                        }
+//            case 37 -> titleDeedsImg[index] = titleDeedsImg[5];
+                        case 38 -> {
+                            index1 = 3;
+                            index2 = 4;
+                        }
+//            case 39 -> titleDeedsImg[index] = titleDeedsImg[5];
 
 
-
-
-
-            default -> {
+                        default -> {
+                        }
+                    }
+                }
             }
         }
     }
-
 }
