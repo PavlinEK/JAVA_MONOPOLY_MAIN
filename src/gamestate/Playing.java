@@ -46,9 +46,9 @@ public class Playing extends State implements Statemethods {
                 this);
         dice2 = new Dice((int) (Game.GAME_WIDTH / 2.85 - boardWidth / 2), (int) (boardHeight + 475),
                 this);
-
-        player = new Player(playerX, playerY, playerWidth, playerHeight, this);
         loadPlayer();
+        player = new Player(playerX, playerY, playerWidth, playerHeight, this);
+
 
 
 
